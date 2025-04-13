@@ -1,6 +1,8 @@
 
 package com.mycompany.conversortemperatura;
+
 import javax.swing.*;
+import java.awt.event.*;
 
 
 public class Interface extends JFrame{
@@ -8,7 +10,8 @@ public class Interface extends JFrame{
     
     private JButton conf;
     private JRadioButton  op1 = new JRadioButton ("C -> F");
-    private JButton op2; 
+    private JRadioButton  op2 = new JRadioButton ("F-> C");
+    private JButton selecionar = new JButton("SELECIONAR");
     
     
     
@@ -23,11 +26,34 @@ public class Interface extends JFrame{
         escolha.setBounds(0,0,100,50);
         add(escolha);
       
-        op1.setBounds( 100,50,100,50);
+        op1.setBounds( 0,50,100,50);
         add(op1);
         
+        op2.setBounds(100,50,100,50);
+        add(op2);
+        
+         ButtonGroup grupo = new ButtonGroup();
+        grupo.add(op1);
+        grupo.add(op2);
         
         
+        selecionar.setBounds(50,125,125,50);
+        add(selecionar);
+        
+        
+         selecionar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(op1.isSelected()){
+                    JanelaCelsius j = new JanelaCelsius();
+                    dispose();
+                    
+                }else{
+                    JanelaFahrenheit i = new JanelaFahrenheit();
+                    dispose();
+                    
+                }
+            }
+        });
 
 
 
